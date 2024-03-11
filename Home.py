@@ -99,10 +99,6 @@ if authentication_status == True:
             st.write("- TotalCharges: The total amount charged to the customer")
             st.write("- Churn: Whether the customer churned or not")
 
-            # Live Demo Link
-            st.header("Live Demo")
-            st.markdown("https://livedemo.com")
-
         with col2:
 
             # How to Use Section
@@ -127,7 +123,7 @@ if authentication_status == True:
     authenticator.logout("Logout", "sidebar")
 
     # Display sidebar with user's name
-    st.sidebar.title(f"Welcome {name}")
+    st.sidebar.title("Welcome")
 
     if __name__ == '__main__':
         main()
