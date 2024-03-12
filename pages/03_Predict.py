@@ -120,11 +120,6 @@ else:
         #Create a Dataframe
         df = pd.DataFrame(data, columns=columns)
 
-        df["Date_of_prediction"] = datetime.date.today()
-        df["Model"] = st.session_state["selected_model"]
-
-        df.to_csv("./data/Prediction_history.csv", mode='a', header=not os.path.exists("./data/Prediction_history.csv"), index=False)
-
         # Make prediction
         predict = pipeline.predict(df)
         prediction = int(predict[0])
@@ -138,6 +133,17 @@ else:
         # Update session_state with prediction and probability
         st.session_state['prediction'] = prediction
         st.session_state['probability'] = probability
+
+        df["Date_of_prediction"] = datetime.date.today()
+        df["Model"] = st.session_state["selected_model"]
+        df['Predicted Outcome'] = prediction
+
+        if prediction == 'Yes':
+            df['Probability'] = f'{round(probability[0][1] * 100, 2)}%'
+        else:
+            df['Probability'] = f'{round(probability[0][0] * 100, 2)}%'
+
+        df.to_csv("./data/Prediction_history.csv", mode='a', header=not os.path.exists("./data/Prediction_history.csv"), index=False)
 
         if 'prediction' not in st.session_state:
             st.session_state['prediction'] = None
@@ -166,8 +172,6 @@ else:
             'MonthlyCharges': MonthlyCharges,
             'TotalCharges': TotalCharges
         }
-
-        return prediction, probability
 
         return prediction, probability
 

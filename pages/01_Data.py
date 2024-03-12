@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pyodbc
+import os
 
 # Define a key for storing the data in the session state
 DATA_KEY = "data_key"
@@ -51,6 +52,7 @@ else:
             # Close the database connection
             conn.close()
 
+
     # Function to select features based on type
     def select_features(feature_type, df):
         if feature_type == 'Numerical Features':
@@ -71,6 +73,23 @@ else:
         # Execute the query and get the data DataFrame
         data_df = query_database(query)
 
+        # Define the file path where you want to save the CSV file
+        csv_file_path = "./data/data.csv"
+
+        # Check if the directory exists, if not, create it
+        directory = os.path.dirname(csv_file_path)
+        if not os.path.exists(directory):
+           os.makedirs(directory)
+
+        # Save the DataFrame to a CSV file
+        data_df.to_csv(csv_file_path, index=False)
+
+        # Read the CSV file
+        data_df = pd.read_csv(csv_file_path)
+
+        # Set the data into the session state
+        st.session_state[DATA_KEY] = data_df
+        
         # Set the data into the session state
         st.session_state[DATA_KEY] = data_df
 
