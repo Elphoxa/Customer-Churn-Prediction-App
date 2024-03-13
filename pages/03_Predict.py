@@ -77,8 +77,8 @@ else:
     if 'probability' not in st.session_state:
         st.session_state['probability'] = None
 
-    # if not os.path.exists("./data/Prediction_history.csv"):
-    #         os.mkdir("./data")
+    if not os.path.exists("./data/Prediction_history.csv"):
+            os.mkdir("./data")
 
     # Create function to make prediction
     def make_prediction(pipeline, encoder):

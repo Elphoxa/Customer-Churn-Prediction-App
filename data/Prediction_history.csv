@@ -1,3 +1,5 @@
 gender,SeniorCitizen,Partner,Dependents,tenure,PhoneService,MultipleLines,InternetService,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,Contract,PaperlessBilling,PaymentMethod,MonthlyCharges,TotalCharges,Date_of_prediction,Model,Predicted Outcome,Probability
 Male,0,Yes,Yes,0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,18,19,2024-03-12,Logistic Model,Yes,62.16%
 Female,0,Yes,Yes,0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,18,19,2024-03-12,Sgd Model,Yes,50.28%
+Male,1,No,No,36,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,One year,Yes,Bank transfer (automatic),100,2000,2024-03-12,Sgd Model,No,72.61%
+Female,1,Yes,Yes,45,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,89,5000,2024-03-13,Logistic Model,Yes,51.32%
